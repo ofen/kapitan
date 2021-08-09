@@ -1,0 +1,1123 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://kapitan.dev/">
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.2">
+    
+    
+      
+        <title>Kapitan documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ba0d045b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL(".",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#kapitan-generic-templated-configuration-management-for-kubernetes-terraform-and-other-things" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="Kapitan documentation" class="md-header__button md-logo" aria-label="Kapitan documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Kapitan documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Home
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/kapicorp/kapitan/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kapicorp/kapitan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Kapitan documentation" class="md-nav__button md-logo" aria-label="Kapitan documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Kapitan documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/kapicorp/kapitan/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kapicorp/kapitan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Home
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        Home
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#community" class="md-nav__link">
+    Community
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-concepts" class="md-nav__link">
+    Key Concepts
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inventory" class="md-nav__link">
+    Inventory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generators" class="md-nav__link">
+    Generators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jsonnet-or-kadet-templates-backends" class="md-nav__link">
+    Jsonnet or Kadet templates backends
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jinja2" class="md-nav__link">
+    Jinja2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kapitan-declarative-secrets" class="md-nav__link">
+    Kapitan Declarative Secrets
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quickstart" class="md-nav__link">
+    Quickstart
+  </a>
+  
+    <nav class="md-nav" aria-label="Quickstart">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker-recommended" class="md-nav__link">
+    Docker (recommended)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pip" class="md-nav__link">
+    Pip
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    Documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    Getting Started
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kapitan-features" class="md-nav__link">
+    Kapitan features
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous" class="md-nav__link">
+    Miscellaneous
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#credits" class="md-nav__link">
+    Credits
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#faq" class="md-nav__link">
+    FAQ
+  </a>
+  
+    <nav class="md-nav" aria-label="FAQ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-do-we-prefer-kapitan-to-helm" class="md-nav__link">
+    Why do we prefer Kapitan to Helm?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-do-i-need-kapitan" class="md-nav__link">
+    Why do I need Kapitan?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-projects" class="md-nav__link">
+    Related projects
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Getting started
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Getting started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Getting started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="kapitan_overview/" class="md-nav__link">
+        Kapitan Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="inventory/" class="md-nav__link">
+        Inventory
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="compile/" class="md-nav__link">
+        Compiling components/templates
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Kapitan features
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kapitan features" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Kapitan features
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="secrets/" class="md-nav__link">
+        Secret management
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="validate/" class="md-nav__link">
+        Manifest validation
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="external_dependencies/" class="md-nav__link">
+        External dependency management
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Miscellaneous
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Miscellaneous" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Miscellaneous
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="CI/" class="md-nav__link">
+        Continuous Integration
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="pyenv-scl/" class="md-nav__link">
+        Set up kapitan on older Python systems
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="usage/" class="md-nav__link">
+        Usage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="proposals/" class="md-nav__link">
+        Proposals
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Examples
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="example-kubernetes/" class="md-nav__link">
+        Kubernetes
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="example-terraform/" class="md-nav__link">
+        Terraform
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#community" class="md-nav__link">
+    Community
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-concepts" class="md-nav__link">
+    Key Concepts
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inventory" class="md-nav__link">
+    Inventory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generators" class="md-nav__link">
+    Generators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jsonnet-or-kadet-templates-backends" class="md-nav__link">
+    Jsonnet or Kadet templates backends
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jinja2" class="md-nav__link">
+    Jinja2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kapitan-declarative-secrets" class="md-nav__link">
+    Kapitan Declarative Secrets
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quickstart" class="md-nav__link">
+    Quickstart
+  </a>
+  
+    <nav class="md-nav" aria-label="Quickstart">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker-recommended" class="md-nav__link">
+    Docker (recommended)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pip" class="md-nav__link">
+    Pip
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    Documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    Getting Started
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kapitan-features" class="md-nav__link">
+    Kapitan features
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous" class="md-nav__link">
+    Miscellaneous
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#credits" class="md-nav__link">
+    Credits
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#faq" class="md-nav__link">
+    FAQ
+  </a>
+  
+    <nav class="md-nav" aria-label="FAQ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-do-we-prefer-kapitan-to-helm" class="md-nav__link">
+    Why do we prefer Kapitan to Helm?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-do-i-need-kapitan" class="md-nav__link">
+    Why do I need Kapitan?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-projects" class="md-nav__link">
+    Related projects
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/kapicorp/kapitan/edit/master/docs/README.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="kapitan-generic-templated-configuration-management-for-kubernetes-terraform-and-other-things">Kapitan: Generic templated configuration management for Kubernetes, Terraform and other things</h1>
+<p><a href="https://travis-ci.org/kapicorp/kapitan"><img alt="Build Status" src="https://travis-ci.org/kapicorp/kapitan.svg?branch=master" /></a>
+<img alt="" src="https://img.shields.io/github/pipenv/locked/python-version/kapicorp/kapitan.svg" />
+<img alt="" src="https://img.shields.io/pypi/dm/kapitan" />
+<img alt="" src="https://img.shields.io/docker/pulls/kapicorp/kapitan" />
+<a href="https://github.com/kapicorp/kapitan/actions?query=workflow%3A%22Docker+Build+and+Push%22"><img alt="Docker" src="https://github.com/kapicorp/kapitan/workflows/Docker%20Build%20and%20Push/badge.svg" /></a>
+<a href="https://github.com/kapicorp/kapitan/releases"><img alt="Releases" src="https://img.shields.io/github/release/kapicorp/kapitan.svg" /></a>
+<a href="https://hub.docker.com/r/kapicorp/kapitan"><img alt="Docker Image Size" src="https://img.shields.io/docker/image-size/kapicorp/kapitan/latest.svg" /></a></p>
+<p>Kapitan is the tool to help you manage the complexity of your configuration using an inventory and a choice of templates like <a href="https://medium.com/kapitan-blog/keep-your-ship-together-with-kapitan-d82d441cc3e7">generators</a>, jsonnet, <a href="https://github.com/kapicorp/kapitan/pull/190">kadet</a>, jinja2 and helm.</p>
+<p>Use Kapitan to build an inventory which you can then use to drive templates for your Kubernetes manifests, your documentation, your Terraform configuration or even simplify your scripts.</p>
+<h2 id="community">Community</h2>
+<ul>
+<li><strong>Main Blog, articles and tutorials</strong>: <a href="https://medium.com/kapitan-blog">Kapitan Blog</a></li>
+<li><a href="https://medium.com/kapitan-blog/keep-your-ship-together-with-kapitan-d82d441cc3e7"><strong>Generators</strong></a> and reference kapitan repository: <a href="https://github.com/kapicorp/kapitan-reference">Kapitan Reference</a></li>
+<li><a href="https://github.com/kapicorp/kapitan-reference">Kapitan Reference</a>: our reference repository to get started with Kapitan.</li>
+<li><strong>Slack</strong> <a href="https://kubernetes.slack.com"><code>#kapitan</code></a></li>
+<li><strong>Twitter</strong> <a href="https://twitter.com/kapitandev/">@kapitandev</a> on Twitter. Follow us and share our tweets!</li>
+<li><strong>Website</strong> <a href="https://kapitan.dev"><strong><code>https://kapitan.dev</code></strong></a></li>
+<li><strong>Mailing List</strong> <a href="mailto:kapitan-discuss@googlegroups.com">kapitan-discuss@googlegroups.com</a></li>
+</ul>
+<p>How is it different from <a href="https://github.com/kubernetes/helm"><code>helm</code></a> and <a href="https://github.com/kubernetes-sigs/kustomize"><code>kustomize</code></a>? Please look at our <a href="https://kapitan.dev/#faq">FAQ</a>!</p>
+<p><img src="images/kapitan_logo.png" width="250"></p>
+<h2 id="key-concepts">Key Concepts</h2>
+<h3 id="inventory">Inventory</h3>
+<p>The inventory is the heart of Kapitan. 
+Using simple reusable <code>yaml</code> files (classes), you can represent as a <strong><em>single source of truth</em></strong> 
+everything that matters in your setup, for instance:
+ * kubernetes <code>components</code> definitions
+ * terraform resources
+ * business concepts
+ * documentation and tooling
+ * ...anything else you want!</p>
+<p>Once you have it defined, you can reuse this data to feed into any of the many templating backends available to Kapitan.</p>
+<h3 id="generators"><a href="https://medium.com/kapitan-blog/keep-your-ship-together-with-kapitan-d82d441cc3e7"><strong>Generators</strong></a></h3>
+<p>The simplest way to get started with Kapitan. 
+Generators are <strong><em>universal templates</em></strong> that are a simplified way to generate configuration 
+files (for instance, Kubernetes manifests) without using any templating at all. </p>
+<blockquote>
+<p>Check out our reference repository to get started:  <a href="https://github.com/kapicorp/kapitan-reference">Kapitan Reference</a></p>
+<p>Read our blog post <a href="https://medium.com/kapitan-blog/keep-your-ship-together-with-kapitan-d82d441cc3e7"><strong>Keep your ship together with Kapitan</strong></a> </p>
+</blockquote>
+<h3 id="jsonnet-or-kadet-templates-backends"><a href="https://jsonnet.org/">Jsonnet</a> or <a href="https://github.com/kapicorp/kapitan/pull/190">Kadet</a> templates backends</h3>
+<p>For more complex scenarios, you have a choice of directly using our 2 main templating engines.</p>
+<p>You can use either <a href="https://jsonnet.org/">Jsonnet</a> (tapping into an ever growing number of libraries and examples) or our Python based <a href="https://github.com/kapicorp/kapitan/pull/190">Kadet</a> to create json/yaml based configurations (e.g. Kubernetes, Terraform);</p>
+<h3 id="jinja2"><a href="http://jinja.pocoo.org/">Jinja2</a></h3>
+<p>Good old Jinja to create text based templates for scripts and documentation; Don't underestimate the power of this very simple approach to create templated scripts and documentation!</p>
+<h3 id="kapitan-declarative-secrets"><a href="https://medium.com/kapitan-blog/declarative-secret-management-for-gitops-with-kapitan-b3c596eab088">Kapitan Declarative Secrets</a></h3>
+<p>Use Kapitan to securely generate and manage secrets with GPG, AWS KMS, gCloud KMS and Vault.</p>
+<p>Use <a href="https://github.com/kapicorp/tesoro">Tesoro</a>, our Kubernetes Admission Controller, to complete your integration with Kubernetes for secure secret decryption on-the-fly.</p>
+<h2 id="quickstart">Quickstart</h2>
+<h4 id="docker-recommended">Docker (recommended)</h4>
+<div class="highlight"><pre><span></span><code>docker run -t --rm -v $(pwd):/src:delegated kapicorp/kapitan -h
+</code></pre></div>
+<p>On Linux you can add <code>-u $(id -u)</code> to <code>docker run</code> to preserve file permissions.</p>
+<p>For CI/CD usage, check out <a href="CI/">CI.md</a></p>
+<h4 id="pip">Pip</h4>
+<p>Kapitan needs Python 3.6.</p>
+<p><strong>Install Python 3.6:</strong></p>
+<ul>
+<li>Linux: <code>sudo apt-get update &amp;&amp; sudo apt-get install -y python3.6-dev python3-pip python3-yaml</code></li>
+<li>Mac: <code>brew install python3 libyaml</code></li>
+</ul>
+<p><strong>Install Kapitan:</strong></p>
+<p>User (<code>$HOME/.local/lib/python3.6/bin</code> on Linux or <code>$HOME/Library/Python/3.6/bin</code> on macOS):</p>
+<div class="highlight"><pre><span></span><code>pip3 install --user --upgrade kapitan
+</code></pre></div>
+<p>System-wide (not recommended):</p>
+<div class="highlight"><pre><span></span><code>sudo pip3 install --upgrade kapitan
+</code></pre></div>
+<h2 id="example">Example</h2>
+<p>The example below <em>compiles</em> 2 targets inside the <code>examples/kubernetes</code> folder.
+Each target represents a different namespace in a minikube cluster.</p>
+<p>These targets generate the following resources:</p>
+<ul>
+<li>Kubernetes <code>Namespace</code> for the targets</li>
+<li>Kubernetes <code>StatefulSet</code> for ElasticSearch Master node</li>
+<li>Kubernetes <code>StatefulSet</code> for ElasticSearch Client node</li>
+<li>Kubernetes <code>StatefulSet</code> for ElasticSearch Data node</li>
+<li>Kubernetes <code>Service</code> to expose ElasticSearch discovery port</li>
+<li>Kubernetes <code>Service</code> to expose ElasticSearch service port</li>
+<li>Kubernetes <code>StatefulSet</code> for MySQL</li>
+<li>Kubernetes <code>Service</code> to expose MySQL service port</li>
+<li>Kubernetes <code>Secret</code> for MySQL credentials</li>
+<li>Scripts to configure kubectl context to control the targets and helpers to apply/delete objects.</li>
+<li>Documentation</li>
+</ul>
+<p><img alt="demo" src="images/demo.gif" /></p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> examples/kubernetes
+
+$ kapitan compile
+Compiled minikube-mysql
+Compiled minikube-es
+</code></pre></div>
+<h2 id="documentation">Documentation</h2>
+<h3 id="getting-started">Getting Started</h3>
+<ul>
+<li><a href="kapitan_overview/">Kapitan Overview</a></li>
+<li><a href="inventory/">Understanding inventory</a></li>
+<li><a href="compile/">Compile operation</a></li>
+</ul>
+<h3 id="kapitan-features">Kapitan features</h3>
+<ul>
+<li><a href="secrets/">References (formerly secrets)</a></li>
+<li><a href="validate/">Manifest validation</a></li>
+<li><a href="external_dependencies/">External dependencies management</a></li>
+</ul>
+<h3 id="miscellaneous">Miscellaneous</h3>
+<ul>
+<li><a href="usage/">Usage</a></li>
+<li><a href="CI/">Continuous Integration</a></li>
+<li><a href="pyenv-scl/">Set up kapitan on older Python systems</a></li>
+</ul>
+<h3 id="examples">Examples</h3>
+<ul>
+<li><a href="example-kubernetes/">Kubernetes</a></li>
+</ul>
+<h2 id="credits">Credits</h2>
+<ul>
+<li><a href="https://github.com/google/jsonnet">Jsonnet</a></li>
+<li><a href="http://jinja.pocoo.org/docs/2.9/">Jinja2</a></li>
+<li><a href="https://github.com/salt-formulas/reclass">reclass</a></li>
+</ul>
+<h2 id="faq">FAQ</h2>
+<h3 id="why-do-we-prefer-kapitan-to-helm">Why do we prefer Kapitan to <code>Helm</code>?</h3>
+<p>Before developing Kapitan, we turned to <a href="https://github.com/kubernetes/helm"><code>Helm</code></a> in an attempt to improve our old Jinja based templating system.</p>
+<p>We quickly discovered that <code>Helm</code> did not fit well with our workflow, for the following reasons (which were true at the time of the evaluation):</p>
+<ul>
+<li><code>Helm</code> uses Go templates to define Kubernetes (yaml) manifests. We were already unsatisfied by using Jinja and we did not see a huge improvement from our previous system, the main reason being: YAML files are not suitable to be managed by text templating frameworks.</li>
+<li><code>Helm</code> does not have a solution for sharing values across charts, if not through subcharts. We wanted to be able to have one single place to define all values for all our templates. Sharing data between charts felt awkward and complicated.</li>
+<li><code>Helm</code> is component/chart based. We wanted to have something that would treat all our deployments as a whole.</li>
+<li>We did not fancy the dependency on the tiller.</li>
+</ul>
+<p>In short, we feel <code>Helm</code> is trying to be <code>apt-get</code> for Kubernetes charts, while we are trying to take you further than that.</p>
+<h3 id="why-do-i-need-kapitan">Why do I need Kapitan?</h3>
+<p>With Kapitan, we worked to de-compose several problems that most of the other solutions are treating as one.</p>
+<p>1) <strong><em>Kubernetes manifests</em></strong>: We like the jsonnet approach of using json as the working language. Jsonnet allows us to use inheritance and composition, and hide complexity at higher levels.</p>
+<p>2) <strong><em>Configuration files</em></strong>: Most solutions will assume this problem is solved somewhere else. We feel Jinja (or your template engine of choice) have the upper hand here.</p>
+<p>3) <strong><em>Hierarchical inventory</em></strong>: This is the feature that sets us apart from other solutions. We use the inventory (based on <a href="https://github.com/salt-formulas/reclass">reclass</a>) to define variables and properties that can be reused across different projects/deployments. This allows us to limit repetition, but also to define a nicer interface with developers (or CI tools) which will only need to understand YAML to operate changes.</p>
+<p>4) <strong><em>Secrets</em></strong>: We manage most of our secrets with kapitan using the GPG, Google Cloud KMS and AWS KMS integrations. Keys can be setup per class, per target or shared so you can easily and flexibly manage access per environment. They can also be dynamically generated on compilation, if you don't feel like generating random passwords or RSA private keys, and they can be referenced in the inventory like any other variables. We have plans to support other providers such as Vault, in addition to GPG, Google Cloud KMS and AWS KMS.</p>
+<p>5) <strong><em>Canned scripts</em></strong>: We treat scripts as text templates, so that we can craft pre-canned scripts for the specific target we are working on. This can be used for instance to define scripts that setup clusters, contexts or allow running kubectl with all the correct settings. Most other solutions require you to define contexts and call kubectl with the correct settings. We take care of that for you. Less ambiguity, fewer mistakes.</p>
+<p>6) <strong><em>Documentation</em></strong>: We also use templates to create documentation for the targets we deploy. Documentation lived alongside everything else and it is treated as a first class citizen.
+We feel most other solutions are pushing the limits of their capacity in order to provide for the above problems.
+Helm treats everything as a text template, while jsonnet tries to do everything as json.
+We believe that these approaches can be blended in a powerful new way, glued together by the inventory.</p>
+<h2 id="related-projects">Related projects</h2>
+<ul>
+<li><a href="https://github.com/kapicorp/tesoro">Tesoro</a> - Kubernetes Admission Controller for Kapitan Secrets</li>
+<li><a href="https://github.com/kapicorp/kapitan-reference">Kapitan Reference</a> - Reference repository to get started</li>
+<li><a href="https://github.com/gburiola/sublime-jsonnet-syntax">sublime-jsonnet-syntax</a> - Jsonnet syntax highlighting for Sublime Text</li>
+<li><a href="https://github.com/google/language-jsonnet">language-jsonnet</a> - Jsonnet syntax highlighting for Atom</li>
+<li><a href="https://github.com/google/vim-jsonnet">vim-jsonnet</a> - Jsonnet plugin for Vim (requires a vim plugin manager)</li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+      
+        
+        <a href="contributing/" class="md-footer__link md-footer__link--next" aria-label="Next: Contributing" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Contributing
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.2b46852b.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1058 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://kapitan.dev/external_dependencies/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.2">
+    
+    
+      
+        <title>External dependency management - Kapitan documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#fetching-external-dependencies" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Kapitan documentation" class="md-header__button md-logo" aria-label="Kapitan documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Kapitan documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              External dependency management
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/kapicorp/kapitan/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kapicorp/kapitan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Kapitan documentation" class="md-nav__button md-logo" aria-label="Kapitan documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Kapitan documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/kapicorp/kapitan/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kapicorp/kapitan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Getting started
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Getting started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Getting started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kapitan_overview/" class="md-nav__link">
+        Kapitan Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inventory/" class="md-nav__link">
+        Inventory
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compile/" class="md-nav__link">
+        Compiling components/templates
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        Kapitan features
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kapitan features" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Kapitan features
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../secrets/" class="md-nav__link">
+        Secret management
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validate/" class="md-nav__link">
+        Manifest validation
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          External dependency management
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        External dependency management
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git-type" class="md-nav__link">
+    Git type
+  </a>
+  
+    <nav class="md-nav" aria-label="Git type">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage_1" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#http-type" class="md-nav__link">
+    HTTP type
+  </a>
+  
+    <nav class="md-nav" aria-label="HTTP type">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage_2" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_1" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#helm-type" class="md-nav__link">
+    Helm type
+  </a>
+  
+    <nav class="md-nav" aria-label="Helm type">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage_3" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_2" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Miscellaneous
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Miscellaneous" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Miscellaneous
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CI/" class="md-nav__link">
+        Continuous Integration
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pyenv-scl/" class="md-nav__link">
+        Set up kapitan on older Python systems
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usage/" class="md-nav__link">
+        Usage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proposals/" class="md-nav__link">
+        Proposals
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Examples
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../example-kubernetes/" class="md-nav__link">
+        Kubernetes
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../example-terraform/" class="md-nav__link">
+        Terraform
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git-type" class="md-nav__link">
+    Git type
+  </a>
+  
+    <nav class="md-nav" aria-label="Git type">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage_1" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#http-type" class="md-nav__link">
+    HTTP type
+  </a>
+  
+    <nav class="md-nav" aria-label="HTTP type">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage_2" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_1" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#helm-type" class="md-nav__link">
+    Helm type
+  </a>
+  
+    <nav class="md-nav" aria-label="Helm type">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage_3" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_2" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/kapicorp/kapitan/edit/master/docs/external_dependencies.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="fetching-external-dependencies">Fetching external dependencies</h1>
+<p>Kapitan is capable of fetching components stored in remote locations. This feature can be used by specifying those dependencies in the inventory under <code>parameters.kapitan.dependencies</code>. Supported types are:</p>
+<ul>
+<li><a href="#git-type">git type</a></li>
+<li><a href="#http-type">http type</a></li>
+<li><a href="#helm-type">helm type</a></li>
+</ul>
+<p>Some use cases of this feature may include:</p>
+<ul>
+<li>using templates/jsonnet libraries hosted remotely</li>
+<li>using values in remote files via <code>file_read</code> jsonnet callback</li>
+</ul>
+<h2 id="usage">Usage</h2>
+<div class="highlight"><pre><span></span><code><span class="nt">parameters</span><span class="p">:</span>
+  <span class="nt">kapitan</span><span class="p">:</span>
+    <span class="nt">dependencies</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;dependency_type&gt;</span>
+      <span class="nt">output_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">path/to/file/or/dir</span>
+      <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;source_of_dependency&gt;</span>
+      <span class="c1"># other type-specific parameters, if any</span>
+</code></pre></div>
+<p>Use <code>--fetch</code> option to fetch the dependencies:</p>
+<div class="highlight"><pre><span></span><code>$ kapitan compile --fetch
+</code></pre></div>
+<p>This will download the dependencies and store them at their respective <code>output_path</code>.
+By default, kapitan does not overwrite existing items with the same name as that of the fetched dependencies.</p>
+<p>Use the <code>--force</code> flag to force fetch (update cache with freshly fetched dependencies) and overwrite any existing item sharing the same name in the <code>output_path</code>.</p>
+<div class="highlight"><pre><span></span><code>$ kapitan compile --fetch --force
+</code></pre></div>
+<p>Use the <code>--cache</code> flag to cache the fetched items in the <code>.dependency_cache</code> directory in the root project directory.</p>
+<div class="highlight"><pre><span></span><code>$ kapitan compile --cache --fetch
+</code></pre></div>
+<h2 id="git-type">Git type</h2>
+<p>Git types can fetch external dependencies available via HTTP/HTTPS or SSH URLs. This is useful for fetching repositories or their sub-directories, as well as accessing them in specific commits and branches (refs).</p>
+<p><strong>Note</strong>: git types require git binary on your system.</p>
+<h3 id="usage_1">Usage</h3>
+<div class="highlight"><pre><span></span><code><span class="nt">parameters</span><span class="p">:</span>
+  <span class="nt">kapitan</span><span class="p">:</span>
+    <span class="nt">dependencies</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">git</span>
+      <span class="nt">output_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">path/to/dir</span>
+      <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">git_url</span>
+      <span class="nt">subdir</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">relative/path/from/repo/root (optional)</span>
+      <span class="nt">ref</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">tag, commit, branch etc. (optional)</span>
+</code></pre></div>
+<h3 id="example">Example</h3>
+<p>Say we want to fetch the source code from our kapitan repository, specifically, <code>kapicorp/kapitan/kapitan/version.py</code>. Let's create a very simple target file <code>inventory/targets/kapitan-example.yml</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">parameters</span><span class="p">:</span>
+  <span class="nt">kapitan</span><span class="p">:</span>
+    <span class="nt">vars</span><span class="p">:</span>
+      <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kapitan-example</span>
+    <span class="nt">dependencies</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">git</span>
+      <span class="nt">output_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">source/kapitan</span>
+      <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">git@github.com:kapicorp/kapitan.git</span>
+      <span class="nt">subdir</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kapitan</span>
+      <span class="nt">ref</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">master</span>
+    <span class="nt">compile</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">input_paths</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">source/kapitan/version.py</span>
+      <span class="nt">input_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">jinja2</span> <span class="c1"># just to copy the file over to target</span>
+      <span class="nt">output_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
+</code></pre></div>
+<p>Then run:</p>
+<div class="highlight"><pre><span></span><code>$ kapitan compile --fetch -t kapitan-example
+Dependency git@github.com:kapicorp/kapitan.git : fetching now
+Dependency git@github.com:kapicorp/kapitan.git : successfully fetched
+Dependency git@github.com:kapicorp/kapitan.git : saved to source/kapitan
+Compiled kapitan-example <span class="o">(</span><span class="m">0</span>.02s<span class="o">)</span>
+
+$ ls <span class="nb">source</span>
+kapitan
+</code></pre></div>
+<p>This will download the kapitan repository (kapicorp/kapitan), copy the sub-directory <code>kapitan</code> and save it to <code>source/kapitan</code>. Therefore, <code>kapicorp/kapitan/kapitan</code> corresponds to <code>source/kapitan</code> locally.</p>
+<p>Note that even if you are not using <code>subdir</code> parameter, you can and should specify the repository name in the <code>output_path</code> parameter. If you only specify <code>source</code> as the <code>output_path</code>, then all the kapitan files will be under <code>source</code> and not <code>source/kapitan</code>.</p>
+<h2 id="http-type">HTTP type</h2>
+<p>http[s] types can fetch external dependencies available at <code>http://</code> or <code>https://</code> URL.</p>
+<h3 id="usage_2">Usage</h3>
+<div class="highlight"><pre><span></span><code><span class="nt">parameters</span><span class="p">:</span>
+  <span class="nt">kapitan</span><span class="p">:</span>
+    <span class="nt">dependencies</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http | https</span>
+      <span class="nt">output_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">path/to/file</span>
+      <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http[s]://&lt;url&gt;</span>
+      <span class="nt">unpack</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True | False</span>
+</code></pre></div>
+<p><code>output_path</code> must fully specify the file name. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">parameters</span><span class="p">:</span>
+  <span class="nt">kapitan</span><span class="p">:</span>
+    <span class="nt">dependencies</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https</span>
+      <span class="nt">output_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">foo.txt</span>
+      <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://example.com/foo.txt</span>
+</code></pre></div>
+<h3 id="example_1">Example</h3>
+<p>Say we want to download kapitan README.md file. Since it's on Github, we can access it as <a href="https://raw.githubusercontent.com/kapicorp/kapitan/master/README.md">https://raw.githubusercontent.com/kapicorp/kapitan/master/README.md</a>. Using the following inventory, we can copy this to our target folder:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">parameters</span><span class="p">:</span>
+  <span class="nt">kapitan</span><span class="p">:</span>
+    <span class="nt">vars</span><span class="p">:</span>
+      <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kapitan-example</span>
+    <span class="nt">dependencies</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https</span>
+      <span class="nt">output_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">README.md</span>
+      <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://raw.githubusercontent.com/kapicorp/kapitan/master/README.md</span>
+    <span class="nt">compile</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">input_paths</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">README.md</span>
+      <span class="nt">input_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">jinja2</span>
+      <span class="nt">output_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
+</code></pre></div>
+<p>Then run:</p>
+<div class="highlight"><pre><span></span><code>$ kapitan compile --fetch -t kapitan-example
+Dependency https://raw.githubusercontent.com/kapicorp/kapitan/master/README.md : fetching now
+Dependency https://raw.githubusercontent.com/kapicorp/kapitan/master/README.md : successfully fetched
+Dependency https://raw.githubusercontent.com/kapicorp/kapitan/master/README.md : saved to README.md
+Compiled kapitan-example <span class="o">(</span><span class="m">0</span>.02s<span class="o">)</span>
+
+$ ls
+compiled inventory README.md
+</code></pre></div>
+<p>This fetches the README.md file from the URL and save it locally.</p>
+<p>Another use case for http types is when we want to download an archive file, such as helm packages, and extract its content.
+Setting <code>unpack: True</code> will unpack zip or tar files onto the <code>output_path</code>. In such cases, set <code>output_path</code> to a folder where you extract the content, and not the file name. You can refer to <a href="../compile/#example">here</a> for the example.</p>
+<h2 id="helm-type">Helm type</h2>
+<p>Fetches helm charts and any specific subcharts in the <code>requirements.yaml</code> file.</p>
+<p><code>helm_path</code> can be used to specify where the <code>helm</code> binary name or path.
+It defaults to the value of the <code>KAPITAN_HELM_PATH</code> environment var or simply to <code>helm</code> if neither is set.
+You should specify only if you don't want the default behavior.</p>
+<h3 id="usage_3">Usage</h3>
+<div class="highlight"><pre><span></span><code><span class="nt">parameters</span><span class="p">:</span>
+  <span class="nt">kapitan</span><span class="p">:</span>
+    <span class="nt">dependencies</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">helm</span>
+      <span class="nt">output_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">path/to/chart</span>
+      <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http[s]://&lt;helm_chart_repository_url&gt;</span>
+      <span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;specific chart version&gt;</span>
+      <span class="nt">chart_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;name of chart&gt;</span>
+      <span class="nt">helm_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;helm binary&gt;</span>
+</code></pre></div>
+<h3 id="example_2">Example</h3>
+<p>If we want to download the prometheus helm chart we simply add the dependency to the monitoring target.
+We want a specific version <code>11.3.0</code> so we put that in.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">parameters</span><span class="p">:</span>
+  <span class="nt">kapitan</span><span class="p">:</span>
+    <span class="nt">vars</span><span class="p">:</span>
+      <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">monitoring</span>
+    <span class="nt">dependencies</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">helm</span>
+        <span class="nt">output_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">charts/prometheus</span>
+        <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://kubernetes-charts.storage.googleapis.com</span>
+        <span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">11.3.0</span>
+        <span class="nt">chart_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+    <span class="nt">compile</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">input_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">helm</span>
+        <span class="nt">output_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
+        <span class="nt">input_paths</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">charts/prometheus</span>
+        <span class="nt">helm_values</span><span class="p">:</span>
+          <span class="nt">alertmanager</span><span class="p">:</span>
+            <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+        <span class="nt">helm_params</span><span class="p">:</span>
+          <span class="nt">namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">monitoring</span>
+          <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+</code></pre></div>
+<p>Then run:</p>
+<div class="highlight"><pre><span></span><code>$ kapitan compile --fetch -t monitoring
+Dependency helm chart prometheus and version <span class="m">11</span>.3.0: fetching now
+Dependency helm chart prometheus and version <span class="m">11</span>.3.0: successfully fetched
+Dependency helm chart prometheus and version <span class="m">11</span>.3.0: saved to charts/prometheus
+Compiled monitoring <span class="o">(</span><span class="m">1</span>.48s<span class="o">)</span>
+
+$ tree -L <span class="m">3</span>
+├── charts
+│   └── prometheus
+│       ├── Chart.yaml
+│       ├── README.md
+│       ├── charts
+│       ├── requirements.lock
+│       ├── requirements.yaml
+│       ├── templates
+│       └── values.yaml
+├── compiled
+│   ├── monitoring
+├── inventory
+    ├── classes
+        ├── common.yml
+        ├── component
+</code></pre></div>
+<p>If you simply want the latest chart available, either don't include the <code>version</code> key or specify an empty string.
+<div class="highlight"><pre><span></span><code><span class="nt">parameters</span><span class="p">:</span>
+  <span class="nt">kapitan</span><span class="p">:</span>
+    <span class="nt">vars</span><span class="p">:</span>
+      <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">monitoring</span>
+    <span class="nt">dependencies</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">helm</span>
+        <span class="nt">output_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">charts/prometheus</span>
+        <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://kubernetes-charts.storage.googleapis.com</span>
+        <span class="nt">version</span><span class="p">:</span> <span class="s">&quot;&quot;</span>
+        <span class="nt">chart_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+    <span class="nt">compile</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">input_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">helm</span>
+        <span class="nt">output_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
+        <span class="nt">input_paths</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">charts/prometheus</span>
+        <span class="nt">helm_values</span><span class="p">:</span>
+          <span class="nt">alertmanager</span><span class="p">:</span>
+            <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+        <span class="nt">helm_params</span><span class="p">:</span>
+          <span class="nt">namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">monitoring</span>
+          <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+</code></pre></div></p>
+<p>Then run:</p>
+<div class="highlight"><pre><span></span><code>$ kapitan compile --fetch -t monitoring
+Dependency helm chart prometheus being fetch with using latest version available
+Dependency helm chart prometheus and version : fetching now
+Dependency helm chart prometheus and version : successfully fetched
+Dependency helm chart prometheus and version : saved to charts/prometheus
+Compiled monitoring <span class="o">(</span><span class="m">1</span>.58s<span class="o">)</span>
+
+$ tree -L <span class="m">3</span>
+├── charts
+│   └── prometheus
+│       ├── Chart.yaml
+│       ├── README.md
+│       ├── charts
+│       ├── requirements.lock
+│       ├── requirements.yaml
+│       ├── templates
+│       └── values.yaml
+├── compiled
+│   ├── monitoring
+├── inventory
+    ├── classes
+        ├── common.yml
+        ├── component
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../validate/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Manifest validation" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Manifest validation
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../CI/" class="md-footer__link md-footer__link--next" aria-label="Next: Continuous Integration" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Continuous Integration
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.2b46852b.min.js"></script>
+      
+    
+  </body>
+</html>

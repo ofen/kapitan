@@ -1,0 +1,892 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://kapitan.dev/example-kubernetes/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.2">
+    
+    
+      
+        <title>Kubernetes - Kapitan documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#kubernetes-example" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Kapitan documentation" class="md-header__button md-logo" aria-label="Kapitan documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Kapitan documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Kubernetes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/kapicorp/kapitan/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kapicorp/kapitan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Kapitan documentation" class="md-nav__button md-logo" aria-label="Kapitan documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Kapitan documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/kapicorp/kapitan/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kapicorp/kapitan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Getting started
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Getting started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Getting started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kapitan_overview/" class="md-nav__link">
+        Kapitan Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inventory/" class="md-nav__link">
+        Inventory
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compile/" class="md-nav__link">
+        Compiling components/templates
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Kapitan features
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kapitan features" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Kapitan features
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../secrets/" class="md-nav__link">
+        Secret management
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validate/" class="md-nav__link">
+        Manifest validation
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../external_dependencies/" class="md-nav__link">
+        External dependency management
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Miscellaneous
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Miscellaneous" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Miscellaneous
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CI/" class="md-nav__link">
+        Continuous Integration
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pyenv-scl/" class="md-nav__link">
+        Set up kapitan on older Python systems
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usage/" class="md-nav__link">
+        Usage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proposals/" class="md-nav__link">
+        Proposals
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      <label class="md-nav__link" for="__nav_6">
+        Examples
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Kubernetes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Kubernetes
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#directory-structure" class="md-nav__link">
+    Directory structure
+  </a>
+  
+    <nav class="md-nav" aria-label="Directory structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inventory" class="md-nav__link">
+    inventory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#components" class="md-nav__link">
+    components
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#templates-docs-scripts" class="md-nav__link">
+    templates, docs, scripts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secrets" class="md-nav__link">
+    secrets
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../example-terraform/" class="md-nav__link">
+        Terraform
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#directory-structure" class="md-nav__link">
+    Directory structure
+  </a>
+  
+    <nav class="md-nav" aria-label="Directory structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inventory" class="md-nav__link">
+    inventory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#components" class="md-nav__link">
+    components
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#templates-docs-scripts" class="md-nav__link">
+    templates, docs, scripts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secrets" class="md-nav__link">
+    secrets
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/kapicorp/kapitan/edit/master/docs/example-kubernetes.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="kubernetes-example">Kubernetes example</h1>
+<p>Here, we walk through how kapitan could be used to help create kubernetes manifests, whose values are customized for each target according to the inventory structure. The example folder can be found in our repository on Github at <a href="https://github.com/kapicorp/kapitan/tree/master/examples/kubernetes">https://github.com/kapicorp/kapitan/tree/master/examples/kubernetes</a>.</p>
+<h2 id="directory-structure">Directory structure</h2>
+<p>The following tree shows what this directory looks like (only showing tree level 1):</p>
+<div class="highlight"><pre><span></span><code>├── components
+├── docs
+├── inventory
+├── lib
+├── scripts
+├── refs
+└── templates
+</code></pre></div>
+<p>We will describe the role of each folder in the following sections.</p>
+<h3 id="inventory">inventory</h3>
+<p>This folder contains the inventory values used to render the templates for each target. The structure of this folder is as follows:</p>
+<div class="highlight"><pre><span></span><code>.
+├── classes
+│   ├── cluster
+│   │   ├── common.yml
+│   │   └── minikube.yml
+│   ├── common.yml
+│   └── component
+│       ├── elasticsearch.yml
+│       ├── mysql.yml
+│       ├── namespace.yml
+│       └── nginx.yml
+└── targets
+    ├── minikube-es.yml
+    ├── minikube-mysql.yml
+    └── minikube-nginx.yml
+</code></pre></div>
+<p>The required sub-folder is <code>targets</code>: during compile, kapitan searches for the yaml files under <code>targets</code> in order to identify the targets. In this example, there are three targets:</p>
+<ul>
+<li>minikube-es</li>
+<li>minikube-mysql</li>
+<li>minikube-nginx</li>
+</ul>
+<p>Therefore, when you run <code>kapitan compile</code>, under the <code>compiled</code> folder that kapitan generates, you will see three folders named after these targets.</p>
+<p><code>classes</code> is a folder that contains yaml files used as the "base class" in the hierarchical inventory database. The values defined here are inherited by the target files. For more explanation on how this works, look at the <a href="../inventory/">inventory documentation</a>. Notice how the classes are nicely divided up into components and clusters, such as nginx and mysql, in order to clearly define what components each target should contain and to make the classes reusable.</p>
+<p>For example, take a look at <code>targets/nginx.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">classes</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">common</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cluster.minikube</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">component.namespace</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">component.nginx</span>
+
+<span class="nt">parameters</span><span class="p">:</span>
+  <span class="nt">target_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">minikube-nginx</span>
+  <span class="nt">namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${target_name}</span>
+</code></pre></div>
+<p>This target inherits values from four files under <code>classes</code> folder:</p>
+<ul>
+<li>common.yml</li>
+<li>cluster/minikube.yml</li>
+<li>component/namespace.yml</li>
+<li>component/nginx.yml</li>
+</ul>
+<p><em>Note: that some of these classes themselves may inherit from other classes.</em></p>
+<p>And the way classes are defined makes it easy to identify what components and clusters this target should contain and belong to!</p>
+<p>Let's take a close look now at <code>component/namespace.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">parameters</span><span class="p">:</span>
+  <span class="nt">namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${target_name}</span>
+  <span class="nt">kapitan</span><span class="p">:</span>
+    <span class="nt">compile</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">output_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pre-deploy</span>
+      <span class="nt">input_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">jsonnet</span>
+      <span class="nt">output_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">yaml</span>
+      <span class="nt">input_paths</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">components/namespace/main.jsonnet</span>
+</code></pre></div>
+<p>As we see, this file declares a <code>kapitan.compile</code> item whose input path (i.e. the template file) is <code>components/namespace/main.jsonnet</code> which, when rendered, will generate yaml file(s) under <code>compiled/minikube-nginx/pre-deploy</code>.</p>
+<p>Don't confuse the <code>components</code> folder with <code>inventory/classes/components</code> folder: the former contains the actual templates, while the latter contains inventory classes.</p>
+<h3 id="components">components</h3>
+<p>This folder contains the template files as discussed above, typically jsonnet and kadet files. The tree of this directory looks as follows:</p>
+<div class="highlight"><pre><span></span><code>.
+├── elasticsearch
+│   ├── elasticsearch.container.jsonnet
+│   ├── elasticsearch.statefulset.jsonnet
+│   └── main.jsonnet
+├── mysql
+│   ├── main.jsonnet
+│   ├── secret.jsonnet
+│   ├── service.jsonnet
+│   └── statefulset.jsonnet
+├── namespace
+│   └── main.jsonnet
+└── nginx
+    └── __init__.py
+</code></pre></div>
+<p>Notice how the directory structure corresponds to that of <code>inventory/classes/components</code> in order to make it easy to identify which templates are used for which components.</p>
+<p>As mentioned above, we know that the target <strong>minikube-nginx</strong> inherits from <code>component.namespace</code>. Let's take a look at <code>components/namespace/main.jsonnet</code>:</p>
+<div class="highlight"><pre><span></span><code>local kube = import &quot;lib/kube.libjsonnet&quot;;
+local kap = import &quot;lib/kapitan.libjsonnet&quot;;
+local inventory = kap.inventory();
+local p = inventory.parameters;
+
+{
+    &quot;00_namespace&quot;: kube.Namespace(p.namespace),
+    &quot;10_serviceaccount&quot;: kube.ServiceAccount(&quot;default&quot;)
+}
+</code></pre></div>
+<p>The first two lines import libjsonnet files under <code>lib</code> folder: this is the folder that contains helper files used inside templates. For example, <code>kapitan.libjsonnet</code> allows you to access inventory values inside jsonnet templates, and <code>kube.libjsonnet</code> defines functions to generate popular kubernetes manifests.</p>
+<p>The actual object defined in <code>components/namespace/main.jsonnet</code> looks like this:</p>
+<div class="highlight"><pre><span></span><code>{
+    &quot;00_namespace&quot;: kube.Namespace(p.namespace),
+    &quot;10_serviceaccount&quot;: kube.ServiceAccount(&quot;default&quot;)
+}
+</code></pre></div>
+<p>We have "00_namespace" and "10_serviceaccount" as the keys. These will become files under <code>compiled/minikube-nginx/pre-deploy</code>, since <code>pre-deploy</code> is the <code>input_paths</code> declared in the inventory. For instance, <code>00_namespace.yml</code> would look like this:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Namespace</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">annotations</span><span class="p">:</span> <span class="p p-Indicator">{}</span>
+  <span class="nt">labels</span><span class="p">:</span>
+    <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">minikube-nginx</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">minikube-nginx</span>
+  <span class="nt">namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">minikube-nginx</span>
+<span class="nt">spec</span><span class="p">:</span> <span class="p p-Indicator">{}</span>
+</code></pre></div>
+<h3 id="templates-docs-scripts">templates, docs, scripts</h3>
+<p>These folders contain jinja2 template files. For example, <code>component.elasticsearch</code> contains:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">kapitan</span><span class="p">:</span>
+  <span class="nt">compile</span><span class="p">:</span>
+  <span class="c1"># other items abbreviated for clarity</span>
+  <span class="p p-Indicator">-</span> <span class="nt">output_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">scripts</span>
+    <span class="nt">input_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">jinja2</span>
+    <span class="nt">input_paths</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">scripts</span>
+  <span class="p p-Indicator">-</span> <span class="nt">output_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
+    <span class="nt">input_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">jinja2</span>
+    <span class="nt">input_paths</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">docs/elasticsearch/README.md</span>
+</code></pre></div>
+<p>Since <code>component.elasticsearch</code> is inherited by the target <strong>minikube-es</strong>, this generates files under <code>compiled/minikube-es/scripts</code> and <code>compiled/minikube-es/README.md</code>.</p>
+<h3 id="secrets">secrets</h3>
+<p>This folder contains secrets created manually by the user, or automatically by kapitan. Refer to <a href="../secrets/">secrets management</a> for how it works.</p>
+<p>In this example, the configuration, such as the recipients, is declared in <code>inventory/classes/common.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">parameters</span><span class="p">:</span>
+  <span class="nt">kapitan</span><span class="p">:</span>
+    <span class="nt">vars</span><span class="p">:</span>
+      <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${target_name}</span>
+      <span class="nt">namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${target_name}</span>
+    <span class="nt">secrets</span><span class="p">:</span>
+      <span class="nt">gpg</span><span class="p">:</span>
+        <span class="nt">recipients</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">example@kapitan.dev</span>
+            <span class="nt">fingerprint</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">D9234C61F58BEB3ED8552A57E28DC07A3CBFAE7C</span>
+</code></pre></div>
+<p>The references to the secrets are declared in <code>inventory/classes/component/mysql</code>, which is inherited by the target <strong>minikube-mysql</strong>. After running <code>kapitan compile</code>, some of the generated manifests contain the references to secrets. For example, have a look at <code>compiled/minikube-mysql/manifests/mysql_secret.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">data</span><span class="p">:</span>
+  <span class="nt">MYSQL_ROOT_PASSWORD</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">?{gpg:targets/minikube-mysql/mysql/password:ec3d54de}</span>
+  <span class="nt">MYSQL_ROOT_PASSWORD_SHA256</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">?{gpg:targets/minikube-mysql/mysql/password_sha256:122d2732}</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Secret</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">annotations</span><span class="p">:</span> <span class="p p-Indicator">{}</span>
+  <span class="nt">labels</span><span class="p">:</span>
+    <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">example-mysql</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">example-mysql</span>
+  <span class="nt">namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">minikube-mysql</span>
+<span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Opaque</span>
+</code></pre></div>
+<p><code>MYSQL_ROOT_PASSWORD</code> refers to the secret stored in <code>refs/targets/minikube-mysql/mysql/password</code> and so on.</p>
+<p>You may reveal the secrets by running <code>kapitan refs --reveal -f mysql_secret.yml</code> and use the manifest by piping the output to kubectl!</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../proposals/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Proposals" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Proposals
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../example-terraform/" class="md-footer__link md-footer__link--next" aria-label="Next: Terraform" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Terraform
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.2b46852b.min.js"></script>
+      
+    
+  </body>
+</html>

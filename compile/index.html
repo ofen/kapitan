@@ -1,0 +1,1444 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://kapitan.dev/compile/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.2">
+    
+    
+      
+        <title>Compiling components/templates - Kapitan documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#kapitan-compile" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Kapitan documentation" class="md-header__button md-logo" aria-label="Kapitan documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Kapitan documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Compiling components/templates
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/kapicorp/kapitan/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kapicorp/kapitan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Kapitan documentation" class="md-nav__button md-logo" aria-label="Kapitan documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Kapitan documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/kapicorp/kapitan/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kapicorp/kapitan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        Getting started
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Getting started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Getting started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kapitan_overview/" class="md-nav__link">
+        Kapitan Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inventory/" class="md-nav__link">
+        Inventory
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Compiling components/templates
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Compiling components/templates
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#phases-of-the-compile-command" class="md-nav__link">
+    Phases of the compile command
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specifying-inputs-and-outputs" class="md-nav__link">
+    Specifying inputs and outputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-input-types" class="md-nav__link">
+    Supported input types
+  </a>
+  
+    <nav class="md-nav" aria-label="Supported input types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jinja2" class="md-nav__link">
+    jinja2
+  </a>
+  
+    <nav class="md-nav" aria-label="jinja2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-the-inventory-in-jinja2" class="md-nav__link">
+    Using the inventory in jinja2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jinja2-custom-filters" class="md-nav__link">
+    Jinja2 custom filters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jsonnet" class="md-nav__link">
+    jsonnet
+  </a>
+  
+    <nav class="md-nav" aria-label="jsonnet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-the-inventory-in-jsonnet" class="md-nav__link">
+    Using the inventory in jsonnet
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#callback-functions" class="md-nav__link">
+    Callback functions
+  </a>
+  
+    <nav class="md-nav" aria-label="Callback functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jsonschema-validation-from-jsonnet" class="md-nav__link">
+    Jsonschema validation from jsonnet
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jinja2-jsonnet-templating" class="md-nav__link">
+    Jinja2 jsonnet templating
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kadet" class="md-nav__link">
+    kadet
+  </a>
+  
+    <nav class="md-nav" aria-label="kadet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-kadet-for-post-processing-or-overlaying-manifests-alphaexperimental" class="md-nav__link">
+    using kadet for "post processing" or "overlaying" manifests (alpha/experimental)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helm" class="md-nav__link">
+    helm
+  </a>
+  
+    <nav class="md-nav" aria-label="helm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-the-binding-from-source" class="md-nav__link">
+    Building the binding from source
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helm-subcharts" class="md-nav__link">
+    Helm subcharts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copy" class="md-nav__link">
+    Copy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove" class="md-nav__link">
+    Remove
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-alphaexperimental" class="md-nav__link">
+    External (alpha/experimental)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Kapitan features
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kapitan features" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Kapitan features
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../secrets/" class="md-nav__link">
+        Secret management
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validate/" class="md-nav__link">
+        Manifest validation
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../external_dependencies/" class="md-nav__link">
+        External dependency management
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Miscellaneous
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Miscellaneous" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Miscellaneous
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CI/" class="md-nav__link">
+        Continuous Integration
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pyenv-scl/" class="md-nav__link">
+        Set up kapitan on older Python systems
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usage/" class="md-nav__link">
+        Usage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proposals/" class="md-nav__link">
+        Proposals
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Examples
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../example-kubernetes/" class="md-nav__link">
+        Kubernetes
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../example-terraform/" class="md-nav__link">
+        Terraform
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#phases-of-the-compile-command" class="md-nav__link">
+    Phases of the compile command
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specifying-inputs-and-outputs" class="md-nav__link">
+    Specifying inputs and outputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-input-types" class="md-nav__link">
+    Supported input types
+  </a>
+  
+    <nav class="md-nav" aria-label="Supported input types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jinja2" class="md-nav__link">
+    jinja2
+  </a>
+  
+    <nav class="md-nav" aria-label="jinja2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-the-inventory-in-jinja2" class="md-nav__link">
+    Using the inventory in jinja2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jinja2-custom-filters" class="md-nav__link">
+    Jinja2 custom filters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jsonnet" class="md-nav__link">
+    jsonnet
+  </a>
+  
+    <nav class="md-nav" aria-label="jsonnet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-the-inventory-in-jsonnet" class="md-nav__link">
+    Using the inventory in jsonnet
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#callback-functions" class="md-nav__link">
+    Callback functions
+  </a>
+  
+    <nav class="md-nav" aria-label="Callback functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jsonschema-validation-from-jsonnet" class="md-nav__link">
+    Jsonschema validation from jsonnet
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jinja2-jsonnet-templating" class="md-nav__link">
+    Jinja2 jsonnet templating
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kadet" class="md-nav__link">
+    kadet
+  </a>
+  
+    <nav class="md-nav" aria-label="kadet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-kadet-for-post-processing-or-overlaying-manifests-alphaexperimental" class="md-nav__link">
+    using kadet for "post processing" or "overlaying" manifests (alpha/experimental)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helm" class="md-nav__link">
+    helm
+  </a>
+  
+    <nav class="md-nav" aria-label="helm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-the-binding-from-source" class="md-nav__link">
+    Building the binding from source
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helm-subcharts" class="md-nav__link">
+    Helm subcharts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copy" class="md-nav__link">
+    Copy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove" class="md-nav__link">
+    Remove
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-alphaexperimental" class="md-nav__link">
+    External (alpha/experimental)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/kapicorp/kapitan/edit/master/docs/compile.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="kapitan-compile">Kapitan compile</h1>
+<p><strong>Note:</strong> make sure to read up on <a href="../inventory/">inventory</a> before moving on.</p>
+<h3 id="phases-of-the-compile-command">Phases of the compile command</h3>
+<p>Now that we have a basic understanding of Kapitan <code>inventory</code>, we can talk about the <code>kapitan compile</code> command. </p>
+<p>The command has five distinct <code>phases</code>:</p>
+<ul>
+<li>
+<p><strong>Reclass</strong>: this takes all the target and class definitions and runs reclass to determine what kapitan needs to do during the compile command.</p>
+</li>
+<li>
+<p><strong>Fetch</strong>: this is an optional phase that happens before the compilation actions, if there are dependencies defined in any classes under <code>parameters.kapitan.dependencies</code>. This is triggered through the <code>--fetch</code> option on the <code>kapitan compile</code> command.</p>
+</li>
+<li>
+<p><strong>Compilation</strong>: the Reclass phase has determined a sequential list of actions to run specified in the <code>parameters.kapitan.compile</code> for each target.  The actions can be defined using jinja2, jsonnet, kadet, helm, and copy. These actions define any transpilation steps you want to take to get a desired manifest output, or simply put, your inputs and outputs.</p>
+</li>
+<li>
+<p><strong>Copying</strong>: the Compilation phase runs all of its actions in a tmp folder and when finished, all outputted files for each target are copied to their respective <code>compiled</code> directories.</p>
+</li>
+<li>
+<p><strong>Validate</strong>: this is an optional phase that validates the schema of compiled output. Validate options are specified in the inventory under <code>parameters.kapitan.validate</code></p>
+</li>
+</ul>
+<h2 id="specifying-inputs-and-outputs">Specifying inputs and outputs</h2>
+<p>Input types can be specified in the inventory under <code>kapitan.compile</code> in the following format:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">parameters</span><span class="p">:</span>
+  <span class="nt">kapitan</span><span class="p">:</span>
+    <span class="nt">compile</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">output_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;output_path_in_target_dir&gt;</span>
+      <span class="nt">input_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">jinja2 | jsonnet | kadet | helm | copy</span>
+      <span class="nt">prune</span><span class="p">:</span> <span class="nt">&lt;boolean&gt; (Default</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">global --prune)</span>
+      <span class="nt">input_paths</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">path/to/input/dir/or/file</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">globbed/path/*/main.jsonnet</span>
+      <span class="nt">output_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;output_type_specific_to_input_type&gt;</span>
+</code></pre></div>
+<h2 id="supported-input-types">Supported input types</h2>
+<p>Kapitan supports the following input template types:</p>
+<ul>
+<li><a href="#jinja2">jinja2</a></li>
+<li><a href="#jsonnet">jsonnet</a></li>
+<li><a href="#kadet">kadet</a> (alpha)</li>
+<li><a href="#helm">helm</a> (alpha)</li>
+<li><a href="#copy">copy</a></li>
+<li><a href="#remove">remove</a></li>
+<li><a href="#external-alphaexperimental">external</a></li>
+</ul>
+<h3 id="jinja2">jinja2</h3>
+<p>This renders jinja2 templates, typically stored in <code>templates/</code> directory, such as README, scripts and config files. Refer to <a href="http://jinja.palletsprojects.com/en/2.10.x/templates/">jinja2 docs</a> to understand how the template engine works.</p>
+<p>For Jinja2, <code>input_paths</code> can either be a file, or a directory: in case of a directory, all the templates in the directory will be rendered and outputted to <code>output_path</code>.</p>
+<p>There is the optional <code>input_params</code> field which you can think of as localized function parameters. This is different from <code>inventory</code> and <code>inventory_global</code> parameters, since those are set outside the jinja2 compile block. <code>input_params</code> are useful when needing to use a similar template for multiple components in the same target.</p>
+<p><em>Supported output types</em>: N/A (no need to specify <code>output_type</code>)</p>
+<h4 id="using-the-inventory-in-jinja2">Using the inventory in jinja2</h4>
+<p>Jinja2 types will pass the "inventory" and whatever target vars as context keys in your template.</p>
+<p>This snippet renders the same java_opts for the elasticsearch data role:</p>
+<div class="highlight"><pre><span></span><code>java_opts for elasticsearch data role are: {{ inventory.parameters.elasticsearch.roles.data.java_opts }}
+</code></pre></div>
+<h4 id="jinja2-custom-filters">Jinja2 custom filters</h4>
+<p>We support the following custom filters for use in Jinja2 templates:</p>
+<ul>
+<li><code>sha256</code> - SHA256 hashing of text e.g. <code>{{ text | sha256 }}</code></li>
+<li><code>yaml</code> - Dump text as YAML e.g. <code>{{ text | yaml }}</code></li>
+<li><code>toml</code> - Dump text as TOML e.g. <code>{{ text | toml }}</code></li>
+<li><code>b64encode</code> - base64 encode text e.g. <code>{{ text | b64encode }}</code></li>
+<li><code>b64decode</code> - base64 decode text e.g. <code>{{ text | b64decode }}</code></li>
+<li><code>fileglob</code> - return list of matched regular files for glob e.g. <code>{{ ./path/file* | fileglob }}</code></li>
+<li><code>bool</code> - return the bool for value e.g. <code>{{ yes | bool }}</code></li>
+<li><code>to_datetime</code> - return datetime object for string e.g. <code>{{ "2019-03-07 13:37:00" | to_datetime }}</code></li>
+<li><code>strftime</code> - return current date string for format e.g. <code>{{ "%a, %d %b %Y %H:%M" | strftime }}</code></li>
+<li><code>regex_replace</code> - perform a <code>re.sub</code> returning a string e.g. <code>{{ hello world | regex_replace(pattern="world", replacement="kapitan") }}</code></li>
+<li><code>regex_escape</code> - escape all regular expressions special characters from string e.g. <code>{{ "+s[a-z].*" | regex_escape }}</code></li>
+<li><code>regex_search</code> - perform <code>re.search</code> and return the list of matches or a backref e.g. <code>{{ hello world | regex_search("world.*") }}</code></li>
+<li><code>regex_findall</code> - perform <code>re.findall</code> and return the list of matches as array e.g. <code>{{ hello world | regex_findall("world.*") }}</code></li>
+<li><code>ternary</code> - <code>value ? true_val : false_val</code> e.g. <code>{{ condition | ternary("yes", "no") }}</code></li>
+<li><code>shuffle</code> - randomly shuffle elements of a list <code>{{ [1, 2, 3, 4, 5] | shuffle }}</code></li>
+<li><code>reveal_maybe</code> - reveal <code>ref/secret</code> tag only if <code>compile --reveal</code> flag is set e.g. <code>{{ "?{base64:my_ref}" | reveal_maybe }}</code></li>
+</ul>
+<p>You can also provide path to your custom filter modules in CLI. By default, you can put your filters in <code>lib/jinja2_filters.py</code> and they will automatically get loaded.</p>
+<h3 id="jsonnet">jsonnet</h3>
+<p>Jsonnet is a superset of json format that includes features such as conditionals, variables and imports. Refer to <a href="https://jsonnet.org/learning/tutorial.html">jsonnet docs</a> to understand how it works.</p>
+<p>Note: unlike jinja2 templates, one jsonnet template can output multiple files (one per object declared in the file).</p>
+<p><em>Supported output types:</em></p>
+<ul>
+<li>yaml (default)</li>
+<li>json</li>
+</ul>
+<h4 id="using-the-inventory-in-jsonnet">Using the inventory in jsonnet</h4>
+<p>Typical jsonnet files would start as follows:</p>
+<div class="highlight"><pre><span></span><code>local kap = import &quot;lib/kapitan.libjsonnet&quot;;
+local inventory = kap.inventory();
+</code></pre></div>
+<p>The first line is required to access the kapitan inventory values.</p>
+<p>On the second line, <code>inventory()</code> callback is used to initialise a local variable through which inventory values for this target can be referenced. For example, the script below</p>
+<div class="highlight"><pre><span></span><code>local kap = import &quot;lib/kapitan.libjsonnet&quot;;
+local inventory = kap.inventory();
+
+{
+    &quot;data_java_opts&quot;: inventory.parameters.elasticsearch.roles.data.java_opts,
+}
+</code></pre></div>
+<p>imports the inventory for the target you're compiling and returns the java_opts for the elasticsearch data role.</p>
+<p>Note: The dictionary keys of the jsonnet object are used as filenames for the generated output files.
+If your jsonnet is not a dictionary, but is a valid json(net) object, then the output filename will be the same as the input filename. E.g. <code>'my_string'</code> is inside <code>templates/input_file.jsonnet</code> so the generated output file will be named <code>input_file.json</code> for example and will contain <code>"my_string"</code>.</p>
+<h4 id="callback-functions">Callback functions</h4>
+<p>In addition, importing <code>kapitan.libjsonnet</code> makes available the following native_callback functions gluing reclass to jsonnet (amongst others):</p>
+<div class="highlight"><pre><span></span><code>yaml_load - returns a json string of the specified yaml file
+yaml_load_stream - returns a list of json strings of the specified yaml file
+yaml_dump - returns a string yaml from a json string
+yaml_dump_stream - returns a string yaml stream from a json string
+file_read - reads the file specified
+file_exists - returns informative object if a file exists
+dir_files_list - returns a list of file in a dir
+dir_files_read - returns an object with keys - file_name and values - file contents
+jinja2_template - renders the jinja2 file with context specified
+sha256_string - returns sha256 of string
+gzip_b64 - returns base64 encoded gzip of obj
+inventory - returns a dictionary with the inventory for target
+jsonschema - validates obj with schema, returns object with &#39;valid&#39; and &#39;reason&#39; keys
+</code></pre></div>
+<h5 id="jsonschema-validation-from-jsonnet">Jsonschema validation from jsonnet</h5>
+<p>Given the follow example inventory:</p>
+<div class="highlight"><pre><span></span><code>mysql:
+  storage: 10G
+  storage_class: standard
+  image: mysql:latest
+</code></pre></div>
+<p>The yaml inventory structure can be validated with the new <code>jsonschema()</code> function:</p>
+<div class="highlight"><pre><span></span><code>local schema = {
+    type: &quot;object&quot;,
+    properties: {
+        storage: { type: &quot;string&quot;, pattern: &quot;^[0-9]+[MGT]{1}$&quot;},
+        image: { type: &quot;string&quot; },
+    }
+};
+// run jsonschema validation
+local validation = kap.jsonschema(inv.parameters.mysql, schema);
+// assert valid, otherwise error with validation.reason
+assert validation.valid: validation.reason;
+</code></pre></div>
+<p>If <code>validation.valid</code> is not true, it will then fail compilation and display <code>validation.reason</code>.</p>
+<p>For example, if defining the <code>storage</code> value with an invalid pattern (<code>10Z</code>), compile fails:</p>
+<div class="highlight"><pre><span></span><code>Jsonnet error: failed to compile /code/components/mysql/main.jsonnet:
+ RUNTIME ERROR: &#39;10Z&#39; does not match &#39;^[0-9]+[MGT]{1}$&#39;
+
+Failed validating &#39;pattern&#39; in schema[&#39;properties&#39;][&#39;storage&#39;]:
+    {&#39;pattern&#39;: &#39;^[0-9]+[MGT]{1}$&#39;, &#39;type&#39;: &#39;string&#39;}
+
+On instance[&#39;storage&#39;]:
+    &#39;10Z&#39;
+
+/code/mysql/main.jsonnet:(19:1)-(43:2)
+
+Compile error: failed to compile target: minikube-mysql
+</code></pre></div>
+<h5 id="jinja2-jsonnet-templating">Jinja2 jsonnet templating</h5>
+<p>The following jsonnet snippet renders the jinja2 template in <code>templates/got.j2</code>:</p>
+<div class="highlight"><pre><span></span><code>local kap = import &quot;lib/kapitan.libjsonnet&quot;;
+
+{
+    &quot;jon_snow&quot;: kap.jinja2_template(&quot;templates/got.j2&quot;, { is_dead: false }),
+}
+</code></pre></div>
+<p>It's up to you to decide what the output is.</p>
+<h3 id="kadet">kadet</h3>
+<p>Kadet is an extensible input type that enables you to generate templates using python. The key benefit being the ability to utilize familiar programing principles while having access to kapitan's powerful inventory system.</p>
+<p>A library that defines resources as classes using the Base Object class is required. These can then be utilized within components to render output.</p>
+<p>The following functions are provided by the class <code>BaseObj()</code>.</p>
+<p>Method definitions:</p>
+<ul>
+<li><code>new()</code>: Provides parameter checking capabilities</li>
+<li><code>body()</code>: Enables in-depth parameter configuration</li>
+</ul>
+<p>Method functions:</p>
+<ul>
+<li><code>root()</code>: Defines values that will be compiled into the output</li>
+<li><code>need()</code>: Ability to check &amp; define input parameters</li>
+<li><code>update_root()</code>: Updates the template file associated with the class</li>
+</ul>
+<p>A class can be a resource such as a kubernetes Deployment as shown here:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Deployment</span><span class="p">(</span><span class="n">BaseObj</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">new</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">need</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;name string needed&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">need</span><span class="p">(</span><span class="s2">&quot;labels&quot;</span><span class="p">,</span> <span class="s2">&quot;labels dict needed&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">need</span><span class="p">(</span><span class="s2">&quot;containers&quot;</span><span class="p">,</span> <span class="s2">&quot;containers dict needed&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_root</span><span class="p">(</span><span class="s2">&quot;lib/kubelib/deployment.yml&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">body</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="o">.</span><span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">namespace</span> <span class="o">=</span> <span class="n">inv</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">target_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="o">.</span><span class="n">labels</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">containers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="o">.</span><span class="n">containers</span>
+</code></pre></div>
+<p>The deployment is an <code>BaseObj()</code> which has two main functions. New can be used to perform parameter validation &amp; template compilation. Body is utilized to set those parameters to be rendered. <code>self.root.metadata.name</code> is a direct reference to a key in the corresponding yaml.</p>
+<p>We have established that you may define a library which holds information on classes that represent resource objects. The library is then utilized by defined components to generate the required output.</p>
+<p>Here we import <code>kubelib</code> using <code>load_from_search_paths()</code>. We then use kubelib to access the defined object classes. In this instance the Deployment &amp; Service resource class.</p>
+<div class="highlight"><pre><span></span><code><span class="o">...</span>
+<span class="n">kubelib</span> <span class="o">=</span> <span class="n">kadet</span><span class="o">.</span><span class="n">load_from_search_paths</span><span class="p">(</span><span class="s2">&quot;kubelib&quot;</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;nginx&quot;</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">kadet</span><span class="o">.</span><span class="n">BaseObj</span><span class="o">.</span><span class="n">from_dict</span><span class="p">({</span><span class="s2">&quot;app&quot;</span><span class="p">:</span> <span class="n">name</span><span class="p">})</span>
+<span class="n">nginx_container</span> <span class="o">=</span> <span class="n">kubelib</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="n">inv</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">nginx</span><span class="o">.</span><span class="n">image</span><span class="p">,</span> <span class="n">ports</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;containerPort&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">}]</span>
+<span class="p">)</span>
+<span class="o">...</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">kadet</span><span class="o">.</span><span class="n">BaseObj</span><span class="p">()</span>
+    <span class="n">output</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">nginx_deployment</span> <span class="o">=</span> <span class="n">kubelib</span><span class="o">.</span><span class="n">Deployment</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">containers</span><span class="o">=</span><span class="p">[</span><span class="n">nginx_container</span><span class="p">])</span>
+    <span class="n">output</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">nginx_service</span> <span class="o">=</span> <span class="n">kubelib</span><span class="o">.</span><span class="n">Service</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">ports</span><span class="o">=</span><span class="p">[</span><span class="n">svc_port</span><span class="p">],</span> <span class="n">selector</span><span class="o">=</span><span class="n">svc_selector</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">output</span>
+</code></pre></div>
+<p>Kadet uses a library called <a href="https://github.com/mewwts/addict">addict</a> to organise the parameters inline with the yaml templates.
+As shown above we create a <code>BaseObject()</code> named output. We update the root of this output with the data structure returned from kubelib. This output is what is then returned to kapitan to be compiled into the desired output type.</p>
+<p>For a deeper understanding of this input type please review the proposal document at <a href="/kap_proposals/kap_0_kadet">kadet</a> &amp; the examples located at <code>examples/kubernetes/components/nginx</code>.</p>
+<p><em>Supported output types:</em></p>
+<ul>
+<li>yaml (default)</li>
+<li>json</li>
+</ul>
+<h4 id="using-kadet-for-post-processing-or-overlaying-manifests-alphaexperimental">using kadet for "post processing" or "overlaying" manifests (alpha/experimental)</h4>
+<p>Sometimes you need to add a little something extra to manifests that you can't do within the original compile block.</p>
+<p>For instance, you might use an open source helm chart that doesn't have a specific parameter that is
+configurable. You could download the helm chart locally, amend the chart to take a new parameter, and
+check it into your repository. This could make it harder to upgrade chart versions in the future, and
+understand the motivation behind changes in the chart itself.</p>
+<p>Instead, you could create a kadet module that compiles after the helm input has compiled.
+<div class="highlight"><pre><span></span><code><span class="nt">parameters</span><span class="p">:</span>
+  <span class="nt">test_1</span><span class="p">:</span>
+    <span class="nt">output_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">test-1</span>
+  <span class="nt">kapitan</span><span class="p">:</span>
+    <span class="nt">compile</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">template-helm-chart</span>
+      <span class="nt">input_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">helm</span>
+      <span class="nt">output_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${test_1:output_path}</span>
+      <span class="nt">input_paths</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">&lt;chart_path&gt;</span>
+      <span class="nt">helm_values</span><span class="p">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">&lt;object_with_values_to_override&gt;</span>
+      <span class="nt">helm_values_files</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">&lt;values_file_path&gt;</span>
+      <span class="nt">helm_params</span><span class="p">:</span>
+    <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;chart_release_name&gt;</span>
+        <span class="l l-Scalar l-Scalar-Plain">namespace</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;substitutes_.Release.Namespace&gt;</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">add-metadata-test-1</span>
+      <span class="nt">input_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kadet</span>
+      <span class="nt">output_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${test_1:output_path}</span>
+      <span class="nt">input_paths</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">&lt;path_to_kadet_module&gt;</span>
+      <span class="nt">input_params</span><span class="p">:</span>
+        <span class="nt">team_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ops</span>
+        <span class="nt">post_process_inputs</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">template-helm-chart</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+Here you can clearly define the order in which your manifests are compiled and ensure that the helm
+chart is templated before your kadet module is run. The <code>input_params</code> injected are available in
+the main function as an object. <code>input_params</code> will always have the <code>compile_path</code> which is the absolute
+path to the compile directory where manifests are compiled on the current run. Any additional keys 
+placed on the <code>input_params</code> in the compile block can be accessed in the kadet module for that specific
+compile run.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">kapitan.inputs</span> <span class="kn">import</span> <span class="n">kadet</span>
+
+<span class="n">inventory</span> <span class="o">=</span> <span class="n">kadet</span><span class="o">.</span><span class="n">inventory</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">input_params</span><span class="p">):</span>
+    <span class="n">team_name</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;team_name&quot;</span><span class="p">,</span> <span class="s2">&quot;no-owner&quot;</span><span class="p">)</span>
+<span class="o">...</span>
+    <span class="n">target_name</span> <span class="o">=</span> <span class="n">inventory</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">kapitan</span><span class="o">.</span><span class="n">vars</span><span class="o">.</span><span class="n">target</span>
+    <span class="n">compile_path</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compile_path&quot;</span><span class="p">)</span>
+<span class="o">...</span>
+</code></pre></div>
+<p>For an in depth example, look at the <code>kadet-test</code> target under <code>tests/test_resources/inventory</code>. There is an
+example of adding labels to every kubernetes object a specific compiled folder.</p>
+<h3 id="helm">helm</h3>
+<p>This is a Python binding to <code>helm template</code> command for users with helm charts. This does not require the helm executable, and the templates are rendered without the Tiller server.</p>
+<p>Unlike other input types, Helm input types support the following additional parameters under <code>kapitan.compile</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">parameters</span><span class="p">:</span>
+  <span class="nt">kapitan</span><span class="p">:</span>
+    <span class="nt">compile</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">output_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;output_path&gt;</span>
+      <span class="nt">input_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">helm</span>
+      <span class="nt">input_paths</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">&lt;chart_path&gt;</span>
+      <span class="nt">helm_values</span><span class="p">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">&lt;object_with_values_to_override&gt;</span>
+      <span class="nt">helm_values_files</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">&lt;values_file_path&gt;</span>
+      <span class="nt">helm_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;helm binary&gt;</span>
+      <span class="nt">helm_params</span><span class="p">:</span>
+        <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;chart_release_name&gt;</span>
+        <span class="nt">namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;substitutes_.Release.Namespace&gt;</span>
+        <span class="nt">output_file</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;string&gt;</span>
+        <span class="nt">validate</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="l l-Scalar l-Scalar-Plain">…</span>
+</code></pre></div>
+<p><code>helm_values</code> is an object containing values specified that will override the default values in the input chart. This has exactly the same effect as specifying <code>--values custom_values.yml</code> for <code>helm template</code> command where <code>custom_values.yml</code> structure mirrors that of <code>helm_values</code>.</p>
+<p><code>helm_values_files</code> is an array containing the paths to <a href="https://helm.sh/docs/chart_template_guide/values_files/">helm values files</a> used as input for the chart. This has exactly the same effect as specifying <code>--file my_custom_values.yml</code> for the <code>helm template</code> command where <code>my_custom_values.yml</code> is a helm values file.
+If the same keys exist in <code>helm_values</code> and in multiple specified <code>helm_values_files</code>, the last indexed file in the <code>helm_values_files</code> will take precedence followed by the preceding <code>helm_values_files</code> and at the bottom the <code>helm_values</code> defined in teh compile block.
+There is an example in the tests. The <code>monitoring-dev</code>(kapitan/tests/test_resources/inventory/targets/monitoring-dev.yml) and <code>monitoring-prd</code>(kapitan/tests/test_resources/inventory/targets/monitoring-prd.yml) targets  both use the <code>monitoring</code>(tests/test_resources/inventory/classes/component/monitoring.yml) component.
+This component has helm chart input and takes a <code>common.yml</code> helm_values file which is "shared" by any target that uses the component and it also takes a dynamically defined file based on a kapitan variable defined in the target.</p>
+<p><code>helm_path</code> can be use to provide the helm binary name or path.
+<code>helm_path</code> defaults to the value of <code>KAPITAN_HELM_PATH</code> env var if it is set, else it defaults to <code>helm</code></p>
+<p><code>helm_params</code> correspond to the flags for <code>helm template</code>. Most flags that helm supports can be used here by replacing '-' by '_' in the flag name.</p>
+<p>Flags without argument must have a boolean value, all other flags require a string value.</p>
+<p>Special flags:</p>
+<ul>
+<li><code>name</code>: equivalent of helm template <code>[NAME]</code> parameter. Ignored if <code>name_template</code> is also specified. If neither <code>name_template</code> nor <code>name</code> are specified, the <code>--generate-name</code> flag is used to generate a name.</li>
+<li>
+<p><code>output_file</code>: name of the single file used to output all the generated resources. This is equivalent to call <code>helm template</code> without specifing output dir. If not specified, each resource is generated into a distinct file.</p>
+</li>
+<li>
+<p><code>include_crds</code> and <code>skip_tests</code>: These flags are enabled by default and should be set to <code>false</code> to be removed.</p>
+</li>
+<li><code>debug</code>: prints the helm debug output in kapitan debug log.</li>
+<li>
+<p><code>namespace</code>: note that due to the restriction on <code>helm template</code> command, specifying the namespace does not automatically add <code>metadata.namespace</code> property to the resources. Therefore, users are encouraged to explicitly specify it in all resources:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">namespace</span><span class="p">:</span> <span class="p p-Indicator">{{</span> <span class="nv">.Release.Namespace</span> <span class="p p-Indicator">}}</span> <span class="c1"># or any other custom values</span>
+</code></pre></div>
+</li>
+</ul>
+<p>See the <a href="https://helm.sh/docs/helm/helm_template/">helm doc</a> for further detail.</p>
+<h4 id="example">Example</h4>
+<p>Let's use <a href="https://github.com/helm/charts/tree/master/stable/nginx-ingress">nginx-ingress</a> helm chart as the input. Using <a href="../external_dependencies/">kapitan dependency manager</a>, this chart can be fetched via a URL as listed in <a href="https://helm.nginx.com/stable/index.yaml">https://helm.nginx.com/stable/index.yaml</a>.</p>
+<p><em>On a side note, <code>https://helm.nginx.com/stable/</code> is the chart repository URL which you would <code>helm repo add</code>, and this repository should contain <code>index.yaml</code> that lists out all the available charts and their URLs. By locating this <code>index.yaml</code> file, you can locate all the charts available in the repository.</em></p>
+<p>We can use version 0.3.3 found at <a href="https://helm.nginx.com/stable/nginx-ingress-0.3.3.tgz">https://helm.nginx.com/stable/nginx-ingress-0.3.3.tgz</a>. We can create a simple target file as <code>inventory/targets/nginx-from-chart.yml</code> whose content is as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">parameters</span><span class="p">:</span>
+  <span class="nt">kapitan</span><span class="p">:</span>
+    <span class="nt">vars</span><span class="p">:</span>
+      <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nginx-from-chart</span>
+    <span class="nt">dependencies</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https</span>
+      <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://helm.nginx.com/stable/nginx-ingress-0.3.3.tgz</span>
+      <span class="nt">unpack</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+      <span class="nt">output_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">components/charts</span>
+    <span class="nt">compile</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">output_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
+        <span class="nt">input_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">helm</span>
+        <span class="nt">input_paths</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">components/charts/nginx-ingress</span>
+        <span class="nt">helm_values</span><span class="p">:</span>
+          <span class="nt">controller</span><span class="p">:</span>
+            <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">my-controller</span>
+            <span class="nt">image</span><span class="p">:</span>
+              <span class="nt">repository</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">custom_repo</span>
+        <span class="nt">helm_params</span><span class="p">:</span>
+          <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">my-first-release-name</span>
+          <span class="nt">namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">my-first-namespace</span>
+</code></pre></div>
+<p>To compile this target, run:</p>
+<div class="highlight"><pre><span></span><code>$ kapitan compile --fetch
+Dependency https://helm.nginx.com/stable/nginx-ingress-0.3.3.tgz : fetching now
+Dependency https://helm.nginx.com/stable/nginx-ingress-0.3.3.tgz : successfully fetched
+Dependency https://helm.nginx.com/stable/nginx-ingress-0.3.3.tgz : extracted to components/charts
+Compiled nginx-from-chart <span class="o">(</span><span class="m">0</span>.07s<span class="o">)</span>
+</code></pre></div>
+<p>The chart is fetched before compile, which creates <code>components/charts/nginx-ingress</code> folder that is used as the <code>input_paths</code>  for the helm input type. To confirm if the <code>helm_values</code> actually has overridden the default values, we can try:</p>
+<div class="highlight"><pre><span></span><code>$ grep <span class="s2">&quot;my-controller&quot;</span> compiled/nginx-from-chart/nginx-ingress/templates/controller-deployment.yaml
+  name: my-controller
+      app: my-controller
+        app: my-controller
+</code></pre></div>
+<h4 id="building-the-binding-from-source">Building the binding from source</h4>
+<p>Run</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> kapitan/inputs/helm
+./build.sh
+</code></pre></div>
+<p>This requires Go 1.14.</p>
+<h4 id="helm-subcharts">Helm subcharts</h4>
+<p>There is an <a href="../external_dependencies/">external dependency manager</a> of type <code>helm</code> which enables you to specify helm
+charts to download, including subcharts.</p>
+<h3 id="copy">Copy</h3>
+<p>This input type simply copies the input templates to the output directory without any rendering/processing.
+For Copy, <code>input_paths</code> can be either a file or a directory: in case of a directory, all the templates in the directory will be copied and outputted to <code>output_path</code>.</p>
+<p><em>Supported output types</em>: N/A (no need to specify <code>output_type</code>)</p>
+<p>Example</p>
+<div class="highlight"><pre><span></span><code> <span class="nt">kapitan</span><span class="p">:</span>
+    <span class="nt">compile</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">input_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">copy</span>
+        <span class="nt">ignore_missing</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>  <span class="c1"># Do not error if path is missing. Defaults to False</span>
+        <span class="nt">input_paths</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">resources/state/${target_name}/.terraform.lock.hcl</span>
+        <span class="nt">output_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">terraform/</span>
+</code></pre></div>
+<h3 id="remove">Remove</h3>
+<p>This input type simply removes files or directories. This can be helpful if you can't control particular files
+generated during other compile inputs.</p>
+<p>For example, to remove a file named <code>copy_target</code>, specify an entry to <code>input_paths</code>, <code>compiled/${kapitan:vars:target}/copy_target</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">parameters</span><span class="p">:</span>
+  <span class="nt">target_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">removal</span>
+  <span class="nt">kapitan</span><span class="p">:</span>
+    <span class="nt">vars</span><span class="p">:</span>
+      <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${target_name}</span>
+    <span class="nt">compile</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">input_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">copy</span>
+        <span class="nt">input_paths</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">copy_target</span>
+        <span class="nt">output_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
+      <span class="c1"># test removal of a file</span>
+      <span class="p p-Indicator">-</span> <span class="nt">input_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">remove</span>
+        <span class="nt">input_paths</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">compiled/${kapitan:vars:target}/copy_target</span>
+        <span class="nt">output_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
+</code></pre></div>
+<p>As a reminder, each input block within the compile array is run sequentially for a target in Kapitan. If we reversed the order of the inputs above like so:
+<div class="highlight"><pre><span></span><code><span class="nt">parameters</span><span class="p">:</span>
+  <span class="nt">target_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">removal</span>
+  <span class="nt">kapitan</span><span class="p">:</span>
+    <span class="nt">vars</span><span class="p">:</span>
+      <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${target_name}</span>
+    <span class="nt">compile</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">input_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">remove</span>
+        <span class="nt">input_paths</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">compiled/${kapitan:vars:target}/copy_target</span>
+        <span class="nt">output_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
+      <span class="p p-Indicator">-</span> <span class="nt">input_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">copy</span>
+        <span class="nt">input_paths</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">copy_target</span>
+        <span class="nt">output_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
+</code></pre></div></p>
+<p>The first input block would throw an error because the copy input command hasn't run yet to produce the file being removed by the remove input block.</p>
+<p><em>Supported output types</em>: N/A (no need to specify <code>output_type</code>)</p>
+<h3 id="external-alphaexperimental">External (alpha/experimental)</h3>
+<p>This input type executes an external script or binary. This can be used to manipulate already compiled files or
+execute binaries outside of kapitan that generate or manipulate files.</p>
+<p>For example, <a href="https://get-ytt.io/">ytt</a> is a useful yaml templating tool. It is not built into the kapitan binary,
+however, with the <code>external</code> input type, we could specify the <code>ytt</code> binary to be executed with specific arguments
+and environment variables.</p>
+<p>In this example, we're removing a label from a k8s manifests in a directory <code>ingresses</code> and placing it into the compiled target directory.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">parameters</span><span class="p">:</span>
+  <span class="nt">target_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">k8s-manifests</span>
+  <span class="nt">kapitan</span><span class="p">:</span>
+    <span class="nt">vars</span><span class="p">:</span>
+      <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${target_name}</span>
+    <span class="nt">compile</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">input_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">external</span>
+        <span class="nt">input_paths</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">/usr/local/bin/ytt</span> <span class="c1"># path to ytt on system</span>
+        <span class="nt">output_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
+        <span class="nt">args</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">-f</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ingresses/</span> <span class="c1"># directory with ingresses</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">-f</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ytt/remove.yaml</span> <span class="c1"># custom ytt script</span>
+          <span class="p p-Indicator">-</span> <span class="s">&quot;&gt;&quot;</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">\${compiled_target_dir}/ingresses/ingresses.yaml</span> <span class="c1"># final merged result</span>
+</code></pre></div>
+<p><em>Supported output types</em>: N/A (no need to specify <code>output_type</code>)</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../inventory/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Inventory" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Inventory
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../secrets/" class="md-footer__link md-footer__link--next" aria-label="Next: Secret management" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Secret management
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.2b46852b.min.js"></script>
+      
+    
+  </body>
+</html>

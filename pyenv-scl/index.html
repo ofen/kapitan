@@ -1,0 +1,874 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://kapitan.dev/pyenv-scl/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.2">
+    
+    
+      
+        <title>Set up kapitan on older Python systems - Kapitan documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#kapitan-on-older-linux-systems" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Kapitan documentation" class="md-header__button md-logo" aria-label="Kapitan documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Kapitan documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Set up kapitan on older Python systems
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/kapicorp/kapitan/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kapicorp/kapitan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Kapitan documentation" class="md-nav__button md-logo" aria-label="Kapitan documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Kapitan documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/kapicorp/kapitan/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kapicorp/kapitan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Getting started
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Getting started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Getting started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kapitan_overview/" class="md-nav__link">
+        Kapitan Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inventory/" class="md-nav__link">
+        Inventory
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compile/" class="md-nav__link">
+        Compiling components/templates
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Kapitan features
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kapitan features" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Kapitan features
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../secrets/" class="md-nav__link">
+        Secret management
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validate/" class="md-nav__link">
+        Manifest validation
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../external_dependencies/" class="md-nav__link">
+        External dependency management
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      <label class="md-nav__link" for="__nav_5">
+        Miscellaneous
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Miscellaneous" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Miscellaneous
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CI/" class="md-nav__link">
+        Continuous Integration
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Set up kapitan on older Python systems
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Set up kapitan on older Python systems
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#on-debian-based-operating-systems-pyenv" class="md-nav__link">
+    On Debian-based Operating Systems - PyEnv
+  </a>
+  
+    <nav class="md-nav" aria-label="On Debian-based Operating Systems - PyEnv">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    Getting Started
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-automated-installer" class="md-nav__link">
+    The Automated Installer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manually-installing-from-github" class="md-nav__link">
+    Manually Installing from Github
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-kapitan-with-pyenv" class="md-nav__link">
+    Using Kapitan with PyEnv
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#on-rhel-based-operating-systems-software-collections" class="md-nav__link">
+    On RHEL-based Operating Systems - Software Collections
+  </a>
+  
+    <nav class="md-nav" aria-label="On RHEL-based Operating Systems - Software Collections">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-software-collections-support-on-your-machine" class="md-nav__link">
+    Installing Software Collections support on your machine
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usage/" class="md-nav__link">
+        Usage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proposals/" class="md-nav__link">
+        Proposals
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Examples
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../example-kubernetes/" class="md-nav__link">
+        Kubernetes
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../example-terraform/" class="md-nav__link">
+        Terraform
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#on-debian-based-operating-systems-pyenv" class="md-nav__link">
+    On Debian-based Operating Systems - PyEnv
+  </a>
+  
+    <nav class="md-nav" aria-label="On Debian-based Operating Systems - PyEnv">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    Getting Started
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-automated-installer" class="md-nav__link">
+    The Automated Installer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manually-installing-from-github" class="md-nav__link">
+    Manually Installing from Github
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-kapitan-with-pyenv" class="md-nav__link">
+    Using Kapitan with PyEnv
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#on-rhel-based-operating-systems-software-collections" class="md-nav__link">
+    On RHEL-based Operating Systems - Software Collections
+  </a>
+  
+    <nav class="md-nav" aria-label="On RHEL-based Operating Systems - Software Collections">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-software-collections-support-on-your-machine" class="md-nav__link">
+    Installing Software Collections support on your machine
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/kapicorp/kapitan/edit/master/docs/pyenv-scl.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="kapitan-on-older-linux-systems">Kapitan on Older Linux Systems</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Kapitan requires Python 3.6, and you need to be able to install the dependencies in the
+<a href="https://github.com/kapicorp/kapitan/blob/master/requirements.txt">requirements file</a>.  However, sometimes this isn't entirely straightforward, and you may not be able or willing to install new versions of Python system-wide.</p>
+<p>We do provide a <a href="https://github.com/kapicorp/kapitan/blob/master/Dockerfile">dockerfile</a> which you can use to run Kapitan in a container, but if this isn't practical or possible either, you may wish to use one of the following options:</p>
+<ul>
+<li><a href="https://github.com/pyenv/pyenv">PyEnv</a> (Linux, distro-agnostic)</li>
+<li><a href="https://www.softwarecollections.org">Software Collections</a> (RHEL-based distros)</li>
+</ul>
+<p>Both of these projects allow you to use a different version of Python specifically for your work with or on Kapitan.  They work similarly to <a href="https://docs.python.org/3/tutorial/venv.html">Python Virtual Environments</a> but with more isolation from the lower-level OS-wide Python installation.  Both of these projects manipulate your shell environment variables to make sure you're using the right binaries and modules.  This document assumes you're using the bash shell.</p>
+<p>PyEnv and Software Collections are not Google projects, so please exercise your judgment as to whether these projects are suitable for your circumstances.</p>
+<h2 id="on-debian-based-operating-systems-pyenv">On Debian-based Operating Systems - PyEnv</h2>
+<p>Here at Streams, we use a Debian-based operating system for our day-to-day work.  We've found that <a href="https://github.com/pyenv/pyenv">PyEnv</a> works well for us.</p>
+<h3 id="getting-started">Getting Started</h3>
+<p>Take a look at the <a href="https://github.com/pyenv/pyenv">PyEnv</a> project on Github.  There are two options for installing this project.  The author makes a separate installer script available at <a href="https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer">this Github link</a>, or you can manually install it.  We recommend using the automated installer unless you have reason to use the manual installation process.</p>
+<h3 id="the-automated-installer">The Automated Installer</h3>
+<p>To use the installer, we would recommend downloading the installer script and examining it before you execute it.
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer &gt; pyenv-installer
+</code></pre></div>
+Then, once you've checked it, you can execute it.  PyEnv doesn't need root privileges, so you can run it without using sudo
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>bash ./pyenv-installer
+</code></pre></div>
+Instructions on updating and removing the tool when you've installed it with the installer can be found on the pyenv-installer project page.  Pay attention to the output of the installer.  It might require you to add lines to your .bashrc file manually.</p>
+<h3 id="manually-installing-from-github">Manually Installing from Github</h3>
+<p>Take a look at the README.md on the PyEnv project page and follow the installation instructions there.</p>
+<h3 id="using-kapitan-with-pyenv">Using Kapitan with PyEnv</h3>
+<p>Once you have successfully installed PyEnv, you'll need to restart your shell.  Either open a new shell session or source your .bashrc file like so:
+<code>$ source ~/.bashrc</code></p>
+<p>Now that you have PyEnv ready to go, we can check it runs:
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>pyenv
+<span class="go">pyenv 1.2.8</span>
+<span class="go">Usage: pyenv &lt;command&gt; [&lt;args&gt;]</span>
+<span class="go">...</span>
+</code></pre></div>
+Before you move onto the next step, you'll need to install some dependencies if they aren't already present.  To do this, you might need root access:
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>apt install libssl-dev libffi-dev
+</code></pre></div></p>
+<p>Let's install Python 3.7.1, which is a stable and up-to-date release at the time of writing.  We know Kapitan works with this release.
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>pyenv install <span class="m">3</span>.7.1
+<span class="go">Downloading Python-3.7.1.tar.xz...</span>
+<span class="go">-&gt; https://www.python.org/ftp/python/3.7.1/Python-3.7.1.tar.xz</span>
+<span class="go">Installing Python-3.7.1...</span>
+<span class="go">Installed Python-3.7.1 to /home/mikejo/.pyenv/versions/3.7.1</span>
+<span class="gp">$ </span>pyenv <span class="nb">local</span> <span class="m">3</span>.7.1
+<span class="gp">$ </span>python --version
+<span class="go">Python 3.7.1</span>
+<span class="gp">$</span>
+</code></pre></div>
+Once it completes, we can activate the newer Python installation and set about installing Kapitan!
+Make sure PyEnv is activated using the <code>$ pyenv local 3.7.1</code> command above and then run the following:
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>pip install --user --upgrade kapitan
+</code></pre></div>
+After Kapitan is installed in this way, you might have to add the following to your PATH environment variable:
+<div class="highlight"><pre><span></span><code><span class="gp">$</span><span class="o">{</span>HOME<span class="o">}</span>/.local/bin
+</code></pre></div>
+and you can do this like so:
+<div class="highlight"><pre><span></span><code><span class="go">export PATH=${HOME}/.local/bin:${PATH}</span>
+</code></pre></div>
+Add that line to the end of your .bashrc if you'd like it to take effect in all the shell sessions you use.
+You can now check everything installed correctly and start using Kapitan!
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>kapitan
+<span class="go">usage: kapitan [-h] [--version] {eval,compile,inventory,searchvar,refs} ...</span>
+</code></pre></div></p>
+<h2 id="on-rhel-based-operating-systems-software-collections">On RHEL-based Operating Systems - Software Collections</h2>
+<p>PyEnv will work on RHEL-based operating systems (including the upstream Fedora project).  Another option is to use the <a href="https://www.softwarecollections.org/">Software Collections</a> project.  It's a community project with backing from Red Hat, and it includes both official Red Hat releases of some software collections and third-party contributions.  While Kapitan only needs you to install an official Red Hat collection release, please remember this isn't a Google project and to use your judgment as to whether this is appropriate for your circumstances.</p>
+<h3 id="installing-software-collections-support-on-your-machine">Installing Software Collections support on your machine</h3>
+<p>Software Collections has installation documentation available <a href="https://www.softwarecollections.org/en/docs/">here</a></p>
+<p>As this procedure needs you to add a repository to the OS package manager, you'll need to be root.  Use <code>su</code> or run the following with <code>sudo</code> as appropriate.</p>
+<p>Once you've completed the installation of the scl tool, install the Python 3.5 SCL package (YUM/DNF package names are identical to the name of the Software Collection).
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>yum install rh-python35
+</code></pre></div>
+As of this point, you don't need to be root any more.  Return to your regular shell and activate the Python 3.5 software collection you just installed.  This command starts a shell that uses the Python 3.5 installation you just carried out:
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>scl <span class="nb">enable</span> rh-python35 bash
+</code></pre></div>
+Install Kapitan:
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>pip install --user --upgrade kapitan
+</code></pre></div>
+After Kapitan is installed in this way, you might have to add the following to your PATH environment variable:
+<div class="highlight"><pre><span></span><code><span class="gp">$</span><span class="o">{</span>HOME<span class="o">}</span>/.local/bin
+</code></pre></div>
+and you can do this like so:
+<div class="highlight"><pre><span></span><code><span class="go">export PATH=${HOME}/.local/bin:${PATH}</span>
+</code></pre></div>
+Add that line to the end of your .bashrc if you'd like it to take effect in all the shell sessions you use.
+You can now check everything installed correctly and start using Kapitan!
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>kapitan
+<span class="go">usage: kapitan [-h] [--version] {eval,compile,inventory,searchvar,secrets} ...</span>
+</code></pre></div>
+When you come back to using this method after restarting your shell, you can switch back to the rh-python35 collection either by creating a shell alias for the kapitan command to <code>'scl enable rh-python35 kapitan'</code>
+but we recommend that you can use the scl command to start a new shell using
+<code>'$ scl enable rh-python35 bash'</code>
+Once you finish using the software collection, exit the shell with <code>exit</code>  or <code>Ctrl+D</code></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../CI/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Continuous Integration" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Continuous Integration
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../usage/" class="md-footer__link md-footer__link--next" aria-label="Next: Usage" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Usage
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.2b46852b.min.js"></script>
+      
+    
+  </body>
+</html>
